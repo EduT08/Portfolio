@@ -1,163 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contacto | Eduardo Trigueros</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #0e0e0e;
-      color: #f5f5f5;
-    }
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    header {
-      background-color: #111;
-      text-align: center;
-      padding: 40px 20px;
-      border-bottom: 2px solid #b30000;
-    }
-
-    header h1 {
-      font-size: 2.4em;
-      color: #b30000;
-    }
-
-    nav {
-      background-color: #1a1a1a;
-      text-align: center;
-      padding: 15px;
-    }
-
-    nav a {
-      color: #fff;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #b30000;
-    }
-
-    section {
-      max-width: 800px;
-      margin: 60px auto;
-      background-color: #151515;
-      border-left: 4px solid #b30000;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.15);
-    }
-
-    section h2 {
-      color: #b30000;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    input, textarea {
-      background: #0e0e0e;
-      border: 1px solid #333;
-      color: #fff;
-      padding: 12px;
-      border-radius: 6px;
-      font-size: 1em;
-      outline: none;
-      transition: border 0.3s ease;
-    }
-
-    input:focus, textarea:focus {
-      border-color: #b30000;
-    }
-
-    button {
-      background-color: #b30000;
-      border: none;
-      color: #fff;
-      font-size: 1.1em;
-      font-weight: 600;
-      padding: 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background-color: #e60000;
-    }
-
-    .contact-info {
-      margin-top: 30px;
-      text-align: center;
-      font-size: 1.1em;
-    }
-
-    .contact-info p {
-      margin: 10px 0;
-    }
-
-    .contact-info a {
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .contact-info a:hover {
-      color: #b30000;
-    }
-
-    footer {
-      text-align: center;
-      color: #888;
-      padding: 25px;
-      background-color: #111;
-      border-top: 2px solid #b30000;
-      margin-top: 60px;
-    }
-
-    /* Animación de entrada */
-    @keyframes fadeSlide {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    section {
-      animation: fadeSlide 0.6s ease forwards;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Contacto</h1>
-  </header>
+  <header><h1>Contacto</h1></header>
 
+  <button class="menu-toggle">Menú</button>
   <nav>
-  <a href="index.html">Sobre mí</a>
-  <a href="estudios.html">Mis estudios</a>
-  <a href="proyectos.html">Proyectos</a>
-  <a href="cv.html">CV</a>
-  <a href="contacto.html">Contacto</a>
+    <a href="index.html">Sobre mí</a>
+    <a href="estudios.html">Mis estudios</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="cv.html">CV</a>
+    <a href="contacto.html" class="active">Contacto</a>
   </nav>
 
   <section>
     <h2>Contáctame</h2>
+
     <form action="https://formspree.io/f/xgvpgezl" method="POST">
       <input type="text" name="name" placeholder="Tu nombre" required>
       <input type="email" name="email" placeholder="Tu correo electrónico" required>
@@ -165,14 +32,14 @@
       <button type="submit">Enviar mensaje</button>
     </form>
 
-    <div class="contact-info">
+    <div class="contact-info" style="margin-top:22px; text-align:center;">
       <p>📞 <strong>Teléfono:</strong> <a href="tel:+34623225862">623 22 58 62</a></p>
       <p>📧 <strong>Correo:</strong> <a href="mailto:eduinestri@gmail.com">eduinestri@gmail.com</a></p>
     </div>
   </section>
 
-  <footer>
-    © 2025 Eduardo Trigueros | edutportfolio.com
-  </footer>
+  <footer>© 2025 Eduardo Trigueros | edutportfolio.com</footer>
+
+  <script src="transition.js"></script>
 </body>
 </html>

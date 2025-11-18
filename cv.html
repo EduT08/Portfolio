@@ -1,129 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Currículum Vitae | Eduardo Trigueros</title>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="stylesheet" href="style.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #0e0e0e;
-      color: #f5f5f5;
-      opacity: 0;
-      transition: opacity 0.8s ease;
+    /* pequeño ajuste para modal del CV (inline para evitar editar style.css) */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.75);
+      z-index: 9999;
+      padding: 20px;
     }
-
-    body.loaded {
-      opacity: 1;
-    }
-
-    header {
-      background-color: #111;
-      text-align: center;
-      padding: 40px 20px;
-      border-bottom: 2px solid #b30000;
-    }
-
-    header h1 {
-      font-size: 2.4em;
-      color: #b30000;
-    }
-
-    nav {
-      background-color: #1a1a1a;
-      text-align: center;
-      padding: 15px;
-    }
-
-    nav a {
-      color: #fff;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #b30000;
-    }
-
-    section {
-      max-width: 900px;
-      margin: 60px auto;
-      background-color: #151515;
-      border-left: 4px solid #b30000;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.15);
+    .modal.open { display: flex; }
+    .modal-content {
+      max-width: 1100px;
+      width: 100%;
+      background: #0d0d0d;
+      padding: 12px;
+      border-radius: 10px;
       text-align: center;
     }
-
-    section h2 {
-      color: #b30000;
-      margin-bottom: 30px;
-    }
-
-    .cv-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      border: 2px solid #b30000;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.25);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .cv-image:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
-    }
-
-    footer {
-      text-align: center;
-      color: #888;
-      padding: 25px;
-      background-color: #111;
-      border-top: 2px solid #b30000;
-      margin-top: 60px;
-    }
+    .modal-content img { width: 100%; height:auto; border-radius:8px; }
+    .modal-close { margin-top:10px; display:inline-block; background:var(--accent); color:#fff; padding:8px 12px; border-radius:6px; text-decoration:none; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Currículum Vitae</h1>
-  </header>
+  <header><h1>Currículum Vitae</h1></header>
 
+  <button class="menu-toggle">Menú</button>
   <nav>
     <a href="index.html">Sobre mí</a>
     <a href="estudios.html">Mis estudios</a>
     <a href="proyectos.html">Proyectos</a>
-    <a href="cv.html">CV</a>
+    <a href="cv.html" class="active">CV</a>
     <a href="contacto.html">Contacto</a>
   </nav>
 
-  <section>
+  <section style="text-align:center;">
     <h2>Mi Currículum</h2>
-    <img src="cv.png" alt="Currículum de Eduardo Trigueros" class="cv-image">
+
+    <!-- Imagen del CV (sustituye cv.png por tu archivo real) -->
+    <img src="cv.png" alt="Currículum de Eduardo Trigueros" class="cv-image" id="cvThumb" style="max-width:800px;">
+
+    <!-- Botón descargar -->
+    <div class="cv-download">
+      <a href="miCV.pdf" download>Descargar CV (PDF)</a>
+    </div>
   </section>
 
-  <footer>
-    © 2025 Eduardo Trigueros | edutportfolio.com
-  </footer>
+  <!-- Modal para ampliar imagen -->
+  <div class="modal" id="cvModal">
+    <div class="modal-content">
+      <img src="cv.png" alt="Currículum ampliado">
+      <a href="#" class="modal-close" id="closeModal">Cerrar</a>
+    </div>
+  </div>
 
+  <footer>© 2025 Eduardo Trigueros | edutportfolio.com</footer>
+
+  <script src="transition.js"></script>
   <script>
-    window.addEventListener("load", () => document.body.classList.add("loaded"));
-    document.querySelectorAll("a[href]").forEach(link => {
-      link.addEventListener("click", function(e) {
-        const href = this.getAttribute("href");
-        if (!href.startsWith("#") && !this.target) {
-          e.preventDefault();
-          document.body.style.opacity = 0;
-          setTimeout(() => window.location.href = href, 400);
-        }
-      });
-    });
+    // Modal CV
+    const cvThumb = document.getElementById('cvThumb');
+    const cvModal = document.getElementById('cvModal');
+    const closeModal = document.getElementById('closeModal');
+    if (cvThumb && cvModal) {
+      cvThumb.addEventListener('click', () => cvModal.classList.add('open'));
+      closeModal.addEventListener('click', (e) => { e.preventDefault(); cvModal.classList.remove('open'); });
+      cvModal.addEventListener('click', (e) => { if (e.target === cvModal) cvModal.classList.remove('open'); });
+    }
   </script>
 </body>
 </html>

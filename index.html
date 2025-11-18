@@ -7,40 +7,29 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    /* --- ESTILO GENERAL --- */
     body {
       opacity: 0;
       transition: opacity 0.8s ease;
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #000000, #3a2a00);
+      background-color: #0e0e0e;
       color: #f5f5f5;
     }
-
     body.loaded { opacity: 1; }
 
-    /* --- CABECERA --- */
     header {
       background-color: #111;
       text-align: center;
       padding: 40px 20px;
       border-bottom: 2px solid #b30000;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
+    header h1 { font-size: 2.8em; color: #b30000; }
 
-    header h1 {
-      font-size: 2.8em;
-      color: #b30000;
-    }
-
-    /* --- NAVEGACIÓN --- */
     nav {
       background-color: #1a1a1a;
       text-align: center;
       padding: 15px;
-      border-bottom: 1px solid #b30000;
     }
-
     nav a {
       color: #fff;
       margin: 0 20px;
@@ -48,29 +37,25 @@
       font-weight: 500;
       transition: color 0.3s;
     }
+    nav a:hover { color: #b30000; }
 
-    nav a:hover {
-      color: #b30000;
-    }
-
-    /* --- SECCIONES --- */
-    section {
+    /* Caja estándar estilo profesional */
+    .box {
       max-width: 900px;
-      margin: 60px auto;
-      background-color: rgba(21, 21, 21, 0.9);
+      margin: 40px auto;
+      background-color: #151515;
       border-left: 4px solid #b30000;
       padding: 40px;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(255, 0, 0, 0.15);
-      backdrop-filter: blur(4px);
     }
-
-    section h2 {
+    .box h2 {
       color: #b30000;
       margin-bottom: 15px;
+      font-size: 1.8em;
     }
 
-    /* --- REDES SOCIALES --- */
+    /* Redes sociales */
     .social-section {
       background-color: #111;
       margin-top: 50px;
@@ -80,12 +65,10 @@
       border: 1px solid #b30000;
       transition: all 0.3s ease;
     }
-
     .social-section:hover {
       box-shadow: 0 0 15px rgba(179, 0, 0, 0.4);
       transform: translateY(-2px);
     }
-
     .social-links a {
       display: inline-block;
       background: #b30000;
@@ -97,73 +80,79 @@
       margin: 8px;
       transition: all 0.3s ease;
     }
-
     .social-links a:hover {
       background: #fff;
       color: #b30000;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
-
     .social-links img {
       vertical-align: middle;
       margin-right: 8px;
       width: 22px;
       border-radius: 6px;
-      filter: drop-shadow(0 0 2px rgba(255,255,255,0.4));
     }
 
-    /* --- PIE DE PÁGINA --- */
     footer {
       text-align: center;
-      color: #aaa;
+      color: #888;
       padding: 25px;
       background-color: #111;
       border-top: 2px solid #b30000;
       margin-top: 50px;
-      font-size: 0.9em;
     }
-
   </style>
 </head>
 <body>
   <header>
-    <h1>Mi Portfolio</h1>
-    <p>Hecho por Eduardo Trigueros Angorrilla</p>
+    <h1>Mi portfolio</h1>
+    <p>Hecho por: Eduardo Trigueros Angorrilla</p>
   </header>
 
   <nav>
-  <a href="index.html">Sobre mí</a>
-  <a href="estudios.html">Mis estudios</a>
-  <a href="proyectos.html">Proyectos</a>
-  <a href="cv.html">CV</a>
-  <a href="contacto.html">Contacto</a>
+    <a href="index.html">Sobre mí</a>
+    <a href="estudios.html">Mis estudios</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="cv.html">CV</a>
+    <a href="contacto.html">Contacto</a>
   </nav>
 
-  <section>
+  <!-- Caja SOBRE MÍ -->
+  <div class="box">
     <h2>Sobre mí</h2>
-    <p>¡Hola! Soy <strong>Eduardo Trigueros Angorrilla</strong>, tengo 17 años y soy un apasionado de la tecnología, el diseño y la programación. Me gusta aprender cada día cosas nuevas y desarrollar proyectos que combinen creatividad y funcionalidad.</p>
+    <p>¡Hola! Soy <strong>Eduardo Trigueros Angorrilla</strong>, tengo 17 años y soy un apasionado de la tecnología, el diseño y la programación.  
+    Me gusta aprender cada día cosas nuevas y desarrollar proyectos que combinen creatividad y funcionalidad.</p>
     <p>Mi objetivo es seguir creciendo profesionalmente en el ámbito de la informática y destacar por la calidad y estilo de mi trabajo.</p>
+  </div>
 
+  <!-- Caja HABILIDADES -->
+  <div class="box">
+    <h2>Habilidades</h2>
+    <ul>
+        <li><strong>Hardware:</strong> Montaje, diagnóstico y mantenimiento de equipos.</li>
+        <li><strong>Sistemas:</strong> Windows, Linux básico, máquinas virtuales.</li>
+        <li><strong>Redes:</strong> DHCP, DNS, configuración de routers y switches básicos.</li>
+        <li><strong>Herramientas:</strong> VirtualBox, herramientas de diagnóstico, Office.</li>
+    </ul>
+  </div>
+
+  <!-- Redes -->
+  <div class="box">
     <div class="social-section">
       <h3>Redes sociales</h3>
-      <p>Para saber más sobre mí y mi vida:</p>
+      <p>Conecta conmigo y descubre mis proyectos más recientes:</p>
       <div class="social-links">
-        <a href="https://www.instagram.com/edu_08_0" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">Instagram
+        <a href="https://www.instagram.com/edu_08_0?igsh=MTVpczE4cHBpcGl6dQ==" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram">
+          Instagram
         </a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <footer>
-    © 2025 Eduardo Trigueros | edutportfolio.com
-  </footer>
+  <footer>© 2025 Eduardo Trigueros | edutportfolio.com</footer>
 
   <script>
-    // Transición al cargar
     window.addEventListener("load", () => document.body.classList.add("loaded"));
-
-    // Transición entre páginas
     document.querySelectorAll("a[href]").forEach(link => {
       link.addEventListener("click", function(e) {
         const href = this.getAttribute("href");
