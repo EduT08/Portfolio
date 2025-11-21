@@ -3,82 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Currículum Vitae | Eduardo Trigueros</title>
+  <title>Proyectos | Eduardo Trigueros</title>
 
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
   <link rel="stylesheet" href="style.css">
+
   <style>
-    /* pequeño ajuste para modal del CV (inline para evitar editar style.css) */
-    .modal {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.75);
-      z-index: 9999;
+    /* TÍTULO PRINCIPAL ESTILO PROFESIONAL */
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      color: #fff;
+      padding-bottom: 8px;
+      border-bottom: 3px solid #ff3b3b;
+      display: inline-block;
+      margin: 0;
+    }
+
+    /* ANIMACIÓN PARA LOS BLOQUES DE PROYECTOS */
+    .project-card {
+      background-color: #1a1a1a;
+      border-left: 4px solid #ff3b3b;
       padding: 20px;
-    }
-    .modal.open { display: flex; }
-    .modal-content {
-      max-width: 1100px;
-      width: 100%;
-      background: #0d0d0d;
-      padding: 12px;
       border-radius: 10px;
-      text-align: center;
+      margin-bottom: 20px;
+
+      transition: transform 0.25s ease,
+                  box-shadow 0.25s ease,
+                  border-color 0.25s ease;
     }
-    .modal-content img { width: 100%; height:auto; border-radius:8px; }
-    .modal-close { margin-top:10px; display:inline-block; background:var(--accent); color:#fff; padding:8px 12px; border-radius:6px; text-decoration:none; }
+
+    .project-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(255, 0, 0, 0.3);
+      border-color: #ff5e5e;
+    }
+
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
   </style>
+
 </head>
 <body>
-  <header><h1>Currículum Vitae</h1></header>
+
+  <!-- TÍTULO PROFESIONAL EN HEADER -->
+  <header>
+    <h1 class="section-title">Proyectos</h1>
+  </header>
 
   <button class="menu-toggle">Menú</button>
   <nav>
     <a href="index.html">Sobre mí</a>
     <a href="estudios.html">Mis estudios</a>
-    <a href="proyectos.html">Proyectos</a>
-    <a href="cv.html" class="active">CV</a>
+    <a href="proyectos.html" class="active">Proyectos</a>
+    <a href="cv.html">CV</a>
     <a href="contacto.html">Contacto</a>
   </nav>
 
-  <section style="text-align:center;">
-    <h2>Mi Currículum</h2>
+  <section>
+    <div class="projects-container">
 
-    <!-- Imagen del CV (sustituye cv.png por tu archivo real) -->
-    <img src="cv.png" alt="Currículum de Eduardo Trigueros" class="cv-image" id="cvThumb" style="max-width:800px;">
+      <div class="project-card">
+        <h3>Diseño Web Moderno</h3>
+        <p>Desarrollo de sitios web con diseño limpio, responsive y accesible.</p>
+      </div>
 
-    <!-- Botón descargar -->
-    <div class="cv-download">
-      <a href="miCV.pdf" download>Descargar CV (PDF)</a>
+      <div class="project-card">
+        <h3>Aplicación Interactiva</h3>
+        <p>App sencilla para mejorar la organización personal mediante UI intuitiva.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Gestión de Datos</h3>
+        <p>Proyecto centrado en la optimización y seguridad del almacenamiento de información.</p>
+      </div>
+
     </div>
   </section>
-
-  <!-- Modal para ampliar imagen -->
-  <div class="modal" id="cvModal">
-    <div class="modal-content">
-      <img src="cv.png" alt="Currículum ampliado">
-      <a href="#" class="modal-close" id="closeModal">Cerrar</a>
-    </div>
-  </div>
 
   <footer>© 2025 Eduardo Trigueros | edutportfolio.com</footer>
 
   <script src="transition.js"></script>
-  <script>
-    // Modal CV
-    const cvThumb = document.getElementById('cvThumb');
-    const cvModal = document.getElementById('cvModal');
-    const closeModal = document.getElementById('closeModal');
-    if (cvThumb && cvModal) {
-      cvThumb.addEventListener('click', () => cvModal.classList.add('open'));
-      closeModal.addEventListener('click', (e) => { e.preventDefault(); cvModal.classList.remove('open'); });
-      cvModal.addEventListener('click', (e) => { if (e.target === cvModal) cvModal.classList.remove('open'); });
-    }
-  </script>
 </body>
 </html>
